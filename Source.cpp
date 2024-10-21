@@ -3,44 +3,32 @@
 using namespace std;
 int main()
 {
-	double i = 0;
-	double k;
-	int N;
-	double S;
-	cout << "k = "; cin >> k;
-	cout << "N = "; cin >> N;
-	S = 0;
-	k = N;
-	while (k <= 19)
-	{
-		S += (((k - N) / (k + N)) + 1);
-		k++;
-	}
-	cout << S << endl;
-	S = 0;
-	k = N;
-	do {
-		S += (((k - N) / (k + N)) + 1);
-		k++;
-	} 
-	while (k <= 19);
-	cout << S << endl;
-	S = 0;
-	for (k = N; k <= 19; k++)
-	{
-		S += (((k - N) / (k + N)) + 1);
-	}
-	cout << S << endl;
-	S = 0;
-	for (k = 19; k >= N; k--)
-	{
-		S += (((k - N) / (k + N)) + 1);
-	}
-	cout << S << endl;
+	double x; 
+	double y; 
+	double A; 
+	//double B; 
+	cout << "x = "; cin >> x;
+	A = 5 * exp(3 * x);
+	// спосіб 1: розгалуження в скороченій формі
+	if (x <= -1)
+		B = 3 + sin(fabs(x) );
+	if (-1 < x && x <= 3)
+		B = 2 * exp((x / 4) - 1);
+	if (x > 3)
+		B = 7 - sqrt(2 * x * x * x);
+	y = A - B;
+	cout << endl;
+	cout << "1) y = " << y << endl;
+	// спосіб 2: розгалуження в повній формі
+	/*if (x <= -1)
+		B = 3 + sin(fabs(x));
+	else
+		if (x > 3)
+			B = 7 - sqrt(2 * x * x * x);
+		else
+			B = 2 * exp((x / 4) - 1);
+	y = A - B;
+	cout << "2) y = " << y << endl;*/
+	cin.get();
 	return 0;
 }
-
-
-
-
-
