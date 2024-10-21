@@ -1,34 +1,22 @@
 #include <iostream>
+#include <cmath>
 using namespace std;
 int main()
 {
-	double x; 
-	double a; 
-	double b; 
-	double c; 
-	double F; 
-	cout << "a = "; cin >> a;
-	cout << "b = "; cin >> b;
-	cout << "c = "; cin >> c;
+	double x;
+	double y;
+	double R;
 	cout << "x = "; cin >> x;
-	// спосіб 1: розгалуження в скороченій формі
-	if (c < 0 && b != 0)
-		F = a * x * x + b * b * x;
-	if (c > 0 && b == 0)
-		F = (x - a) / (x - c);
-	if (!(c < 0 && b != 0) && !(c > 0 && b == 0))
-		F = x / c;
-	cout << endl;
-	cout << "1) F = " << F << endl;
-	// спосіб 2: розгалуження в повній формі
-	if (c < 0 && b != 0)
-		F = a * x * x + b * b * x;
+	cout << "y = "; cin >> y;
+	cout << "R = "; cin >> R;
+
+	if (((x + R) * (x + R) + (y + R) * (y + R) >= R * R &&
+		x <= 0 && x >= -R && y <= 0 && y >= -R) ||
+		((x - R) * (x - R) + y * y <= R * R && y >= 0))
+		cout << "yes" << endl;
 	else
-		if (c > 0 && b == 0)
-			F = (x - a) / (x - c);
-		else
-			F = x / c;
-	cout << "2) F = " << F << endl;
+		cout << "no" << endl;
+
 	cin.get();
 	return 0;
 }
