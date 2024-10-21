@@ -1,35 +1,18 @@
 #include <iostream>
-#include <iomanip>
 #include <cmath>
 using namespace std;
+
 int main()
 {
-	double x, xp, xk, dx, A, B, y;
-	cout << "xp = "; cin >> xp;
-	cout << "xk = "; cin >> xk;
-	cout << "dx = "; cin >> dx;
-	cout << fixed;
-	cout << "---------------------------" << endl;
-	cout << "|" << setw(5) << "x" << "   |"
-		<< setw(7) << "y" << "    |" << endl;
-	cout << "---------------------------" << endl;
-	x = xp;
-	while (x <= xk)
-	{
-		A = 5 * exp(3 * x);
-		if (x <= -1)
-			B = 3 + sin(abs(x));
-		else
-			if (x > 3)
-				B = 7 - sqrt(2 * pow(x , 3));
-			else
-				B = 2 * exp(4 / x - 1);
-		y = A - B;
-		cout << "|" << setw(7) << setprecision(2) << x
-			<< " |" << setw(10) << setprecision(3) << y
-			<< " |" << endl;
-		x += dx;
-	}
-	cout << "---------------------------" << endl;
+	double a;
+	double z1;
+	double z2;
+	cout << "a = "; cin >> a;
+	z1 = (cos(a) + cos(2 * a) + cos(6 * a) + cos(7 * a));
+	z2 = (4 * cos(a / 2) * cos(5 / 2 * a) * cos(4 * a));
+	cout << endl;
+	cout << "z1 = " << z1 << endl;
+	cout << "z2 = " << z2 << endl;
+	cin.get();
 	return 0;
 }
