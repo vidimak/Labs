@@ -4,35 +4,39 @@
 using namespace std;
 int main()
 {
-	double x, a, b, c, xp, xk, dx, F;
-	cout << "a = "; cin >> a;
-	cout << "b = "; cin >> b;
-	cout << "c = "; cin >> c;
+	double x, y, R, xp, xk, dx;
+	cout << "R = "; cin >> R;
 	cout << "xp = "; cin >> xp;
 	cout << "xk = "; cin >> xk;
 	cout << "dx = "; cin >> dx;
 
 	cout << fixed;
-	cout << "----------------------" << endl;
-	cout << "|" << setw(5) << "x" << "   |"
-		<< setw(7) << "F" << "    |" << endl;
-	cout << "----------------------" << endl;
+	cout << "---------------------------" << endl;
+	cout << "|" << setw(5) << "x" << " |"
+		<< setw(7) << "y" << " |" << endl;
+	cout << "---------------------------" << endl;
 
 	x = xp;
 	while (x <= xk)
 	{
-		if (c < 0 && b != 0)
-			F = a * pow(x, 2) + pow(b, 2) * x;
+		if (x <= -5)
+			y = -3;
 		else
-			if (c > 0 && b == 0)
-				F = (x + a) / (x + c);
+			if (-5 < x && x <= -R)
+				y = (3 * x + 15) / (-R + 5) - 3;
 			else
-				F = x / c;
+				if (-R < x && x <= R)
+					y = sqrt(pow(R, 2) - pow(x, 2));
+				else
+					if (R < x && x <= 8)
+						y = (x - R) * R / (8 - R);
+					else 
+						y = R;
 		cout << "|" << setw(7) << setprecision(2) << x
-			<< " |" << setw(10) << setprecision(3) << F
+			<< " |" << setw(10) << setprecision(3) << y
 			<< " |" << endl;
 		x += dx;
 	}
-	cout << "----------------------" << endl;
+	cout << "---------------------------" << endl;
 	return 0;
 }
