@@ -1,35 +1,68 @@
 #include <iostream>
-#include <iomanip>
-#include <time.h>
+#include <cmath>
 using namespace std;
-int main()
-{
-	double x, y, R;
-	srand((unsigned)time(NULL));
-	cout << "R = "; cin >> R;
-	for (int i = 0; i < 10; i++)
-	{
-		cout << "x = "; cin >> x;
-		cout << "y = "; cin >> y;
-		if  (pow((x + R), 2) + pow((y + R), 2) >= pow(R, 2) && y <= 0 && x <= 0 ||
-			pow((x - R), 2) + pow(y , 2) <= pow(R, 2) && y >= 0)
-			cout << "yes" << endl;
-		else
-			cout << "no" << endl;
-	}
-	cout << endl << fixed;
+int main() {
+	double P, S;
+	int k, i;
+	P = 1;
+	k = 1;
 
-		for (int i = 0; i < 10; i++)
+	while (k <= 15)
+	{
+		S = 0;
+		i = 1;
+		while (i <= k)
 		{
-			x = 2 * R * rand() * (-2 * R - 2 * R) / RAND_MAX;
-			y = 2 * R * rand() * (-2 * R - 2 *R ) / RAND_MAX;
-			if (pow((x + R), 2) + pow((y + R), 2) >= pow(R, 2) && y < 0 && x < 0 ||
-				pow((x - R), 2) + pow(y, 2) <= pow(R, 2) && y > 0)
-				cout << setw(8) << setprecision(4) << x << " "
-				<< setw(8) << setprecision(4) << y << " " << "yes" << endl;
-			else
-				cout << setw(8) << setprecision(4) << x << " "
-				<< setw(8) << setprecision(4) << y << " " << "no" << endl;
+			S += cos(i + k);
+			i++;
 		}
+		P *= pow(1 + cos(S), 2);
+		k++;
+	}
+	cout << P << endl;
+	P = 1;
+	k = 1;
+	do
+	{
+		S = 0;
+		i = 1;
+		do
+		{
+
+			S += cos(i + k);
+			i++;
+		} while (i <= k);
+		P *= pow(1 + cos(S), 2);
+		k++;
+	} 
+	
+	while (k <= 15);
+	cout << P << endl;
+	P = 1;
+	for (k = 1; k <= 15; k++)
+	{
+		S = 0;
+		for (i = 1; i <= k; i++)
+		{
+			S += cos(i + k);
+		}
+		P *= pow(1 + cos(S), 2);
+	}
+	cout << P << endl;
+	P = 1;
+	
+	for (k = 15; k >= 1; k--)
+
+	{
+		S = 0;
+		for (i = 1; i >= k; i--)
+
+		{
+			S += cos(i + k);
+
+		}
+		P *= pow(1 + cos(S), 2);
+	}
+	cout << P << endl;
 	return 0;
 }
