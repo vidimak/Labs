@@ -1,42 +1,35 @@
 #include <iostream>
 #include <iomanip>
-#include <cmath>
+#include <time.h>
 using namespace std;
 int main()
 {
-	double x, y, R, xp, xk, dx;
+	double x, y, R;
+	srand((unsigned)time(NULL));
 	cout << "R = "; cin >> R;
-	cout << "xp = "; cin >> xp;
-	cout << "xk = "; cin >> xk;
-	cout << "dx = "; cin >> dx;
-
-	cout << fixed;
-	cout << "---------------------------" << endl;
-	cout << "|" << setw(5) << "x" << " |"
-		<< setw(7) << "y" << " |" << endl;
-	cout << "---------------------------" << endl;
-
-	x = xp;
-	while (x <= xk)
+	for (int i = 0; i < 10; i++)
 	{
-		if (x <= -5)
-			y = -3;
+		cout << "x = "; cin >> x;
+		cout << "y = "; cin >> y;
+		if  (pow((x + R), 2) + pow((y + R), 2) >= pow(R, 2) && y <= 0 && x <= 0 ||
+			pow((x - R), 2) + pow(y , 2) <= pow(R, 2) && y >= 0)
+			cout << "yes" << endl;
 		else
-			if (-5 < x && x <= -R)
-				y = (3 * x + 15) / (-R + 5) - 3;
-			else
-				if (-R < x && x <= R)
-					y = sqrt(pow(R, 2) - pow(x, 2));
-				else
-					if (R < x && x <= 8)
-						y = (x - R) * R / (8 - R);
-					else 
-						y = R;
-		cout << "|" << setw(7) << setprecision(2) << x
-			<< " |" << setw(10) << setprecision(3) << y
-			<< " |" << endl;
-		x += dx;
+			cout << "no" << endl;
 	}
-	cout << "---------------------------" << endl;
+	cout << endl << fixed;
+
+		for (int i = 0; i < 10; i++)
+		{
+			x = 2 * R * rand() * (-2 * R - 2 * R) / RAND_MAX;
+			y = 2 * R * rand() * (-2 * R - 2 *R ) / RAND_MAX;
+			if (pow((x + R), 2) + pow((y + R), 2) >= pow(R, 2) && y < 0 && x < 0 ||
+				pow((x - R), 2) + pow(y, 2) <= pow(R, 2) && y > 0)
+				cout << setw(8) << setprecision(4) << x << " "
+				<< setw(8) << setprecision(4) << y << " " << "yes" << endl;
+			else
+				cout << setw(8) << setprecision(4) << x << " "
+				<< setw(8) << setprecision(4) << y << " " << "no" << endl;
+		}
 	return 0;
 }
